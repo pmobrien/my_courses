@@ -14,7 +14,7 @@ public final class Utils {
 
     System.out.printf(
         "Operation at %s.%s (line %s) took %s ms.%n",
-        ste.getClassName(),
+        ste.getClass().getSimpleName(),
         ste.getMethodName(),
         ste.getLineNumber(),
         System.currentTimeMillis() - start

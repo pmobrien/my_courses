@@ -14,7 +14,7 @@ public class FibonacciTest {
   @MethodSource("testFibonacciSource")
   public void testFibonacci(long index, long expected) {
     if (index > 10) {
-      Assertions.assertTrue(true); // don't run bigger inputs for this case; too slow
+      Assertions.assertTrue(true); // don't run bigger inputs for this implementation; too slow
     }
 
     Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().fibonacci(index)));
