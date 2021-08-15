@@ -1,0 +1,20 @@
+# gradle
+.gradle
+**/build/
+!src/**/build/
+gradle-app.setting
+.gradletasknamecache
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# intellij
+**/.idea/codeStyles/codeStyleConfig.xml
+**/.idea/compiler.xml
+**/.idea/gradle.xml
+**/.idea/jarRepositories.xml
+**/.idea/misc.xml
+**/.idea/runConfigurations.xml
+**/.idea/vcs.xml
+**/.idea/workspace.xml
+
