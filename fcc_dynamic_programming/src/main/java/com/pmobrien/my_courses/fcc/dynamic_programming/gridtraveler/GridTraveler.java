@@ -28,10 +28,10 @@ public class GridTraveler {
   }
 
   public long memoizedGridTraveler(long m, long n) {
-    return memoizedGridTraveler(m, n, new HashMap<>());
+    return _memoizedGridTraveler(m, n, new HashMap<>());
   }
 
-  private long memoizedGridTraveler(long m, long n, Map<String, Long> memo) {
+  private long _memoizedGridTraveler(long m, long n, Map<String, Long> memo) {
     String k1 = m + "," + n;
     String k2 = n + "," + m;
 
@@ -51,7 +51,7 @@ public class GridTraveler {
       return 0;
     }
 
-    long result = memoizedGridTraveler(m - 1, n, memo) + memoizedGridTraveler(m, n - 1, memo);
+    long result = _memoizedGridTraveler(m - 1, n, memo) + _memoizedGridTraveler(m, n - 1, memo);
 
     memo.put(k1, result);
     memo.put(k2, result);

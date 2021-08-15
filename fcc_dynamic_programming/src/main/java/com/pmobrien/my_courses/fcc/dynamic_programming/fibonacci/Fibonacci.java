@@ -22,10 +22,10 @@ public class Fibonacci {
   }
 
   public long memoizedFibonacci(long n) {
-    return memoizedFibonacci(n, new HashMap<>());
+    return _memoizedFibonacci(n, new HashMap<>());
   }
 
-  private long memoizedFibonacci(long n, Map<Long, Long> memo) {
+  private long _memoizedFibonacci(long n, Map<Long, Long> memo) {
     if (memo.containsKey(n)) {
       return memo.get(n);
     }
@@ -34,7 +34,7 @@ public class Fibonacci {
       return 1;
     }
 
-    memo.put(n, memoizedFibonacci(n - 2, memo) + memoizedFibonacci(n - 1, memo));
+    memo.put(n, _memoizedFibonacci(n - 2, memo) + _memoizedFibonacci(n - 1, memo));
 
     return memo.get(n);
   }
