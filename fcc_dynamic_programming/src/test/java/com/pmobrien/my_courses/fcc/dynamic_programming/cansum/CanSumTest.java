@@ -15,13 +15,13 @@ public class CanSumTest {
   @ParameterizedTest
   @MethodSource("testCanSumSource")
   public void testCanSum(long targetSum, List<Long> numbers, boolean expected) {
-    Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().canSum(targetSum, numbers.stream().mapToLong(Long::longValue).toArray())));
+    Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().canSum(targetSum, numbers)));
   }
 
   @ParameterizedTest
   @MethodSource("testCanSumSource")
   public void testMemoizedCanSum(long targetSum, List<Long> numbers, boolean expected) {
-    Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().memoizedCanSum(targetSum, numbers.stream().mapToLong(Long::longValue).toArray())));
+    Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().memoizedCanSum(targetSum, numbers)));
   }
 
   private static Stream<Arguments> testCanSumSource() {

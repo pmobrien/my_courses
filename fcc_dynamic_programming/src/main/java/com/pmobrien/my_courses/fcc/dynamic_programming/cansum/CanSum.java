@@ -1,6 +1,7 @@
 package com.pmobrien.my_courses.fcc.dynamic_programming.cansum;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +18,7 @@ public class CanSum {
 
   public CanSum() {}
 
-  public boolean canSum(long targetSum, long[] numbers) {
+  public boolean canSum(long targetSum, List<Long> numbers) {
     if (targetSum < 0) {
       return false;
     }
@@ -35,11 +36,11 @@ public class CanSum {
     return false;
   }
 
-  public boolean memoizedCanSum(long targetSum, long[] numbers) {
+  public boolean memoizedCanSum(long targetSum, List<Long> numbers) {
     return _memoizedCanSum(targetSum, numbers, new HashMap<>());
   }
 
-  private boolean _memoizedCanSum(long targetSum, long[] numbers, Map<Long, Boolean> memo) {
+  private boolean _memoizedCanSum(long targetSum, List<Long> numbers, Map<Long, Boolean> memo) {
     if (memo.containsKey(targetSum)) {
       return memo.get(targetSum);
     }
