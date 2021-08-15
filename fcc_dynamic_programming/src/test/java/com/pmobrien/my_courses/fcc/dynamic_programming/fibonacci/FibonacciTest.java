@@ -12,18 +12,18 @@ public class FibonacciTest {
 
   @ParameterizedTest
   @MethodSource("testFibonacciSource")
-  public void testFibonacci(long index, long expected) {
-    if (index > 10) {
+  public void testFibonacci(long n, long expected) {
+    if (n > 10) {
       Assertions.assertTrue(true); // don't run bigger inputs for this implementation; too slow
     }
 
-    Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().fibonacci(index)));
+    Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().fibonacci(n)));
   }
 
   @ParameterizedTest
   @MethodSource("testFibonacciSource")
-  public void testMemoizedFibonacci(long index, long expected) {
-    Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().memoizedFibonacci(index)));
+  public void testMemoizedFibonacci(long n, long expected) {
+    Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().memoizedFibonacci(n)));
   }
 
   private static Stream<Arguments> testFibonacciSource() {
