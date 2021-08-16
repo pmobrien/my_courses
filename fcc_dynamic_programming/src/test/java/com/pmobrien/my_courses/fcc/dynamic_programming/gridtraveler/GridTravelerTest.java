@@ -14,7 +14,7 @@ public class GridTravelerTest {
   @MethodSource("testGridTravelerSource")
   public void testGridTraveler(long m, long n, long expected) {
     if (m > 10 || n > 10) {
-      Assertions.assertTrue(true); // don't run bigger inputs for this implementation; too slow
+      return; // don't run bigger inputs for this implementation; too slow
     }
 
     Assertions.assertEquals(expected, Utils.timed(() -> new GridTraveler().gridTraveler(m, n)));
