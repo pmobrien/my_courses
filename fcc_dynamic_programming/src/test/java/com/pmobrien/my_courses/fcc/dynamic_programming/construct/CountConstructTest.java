@@ -1,4 +1,4 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.countconstruct;
+package com.pmobrien.my_courses.fcc.dynamic_programming.construct;
 
 import com.google.common.collect.Lists;
 import com.pmobrien.my_courses.fcc.dynamic_programming.utils.Utils;

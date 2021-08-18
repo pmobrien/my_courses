@@ -1,6 +1,7 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.cansum;
+package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
 import com.google.common.collect.Lists;
+import com.pmobrien.my_courses.fcc.dynamic_programming.sum.CanSum;
 import com.pmobrien.my_courses.fcc.dynamic_programming.utils.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

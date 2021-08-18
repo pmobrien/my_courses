@@ -1,4 +1,4 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.conconstruct;
+package com.pmobrien.my_courses.fcc.dynamic_programming.construct;
 
 import com.google.common.collect.Maps;
 

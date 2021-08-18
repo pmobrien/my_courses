@@ -1,4 +1,4 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.howsum;
+package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
 import com.google.common.collect.Lists;
 

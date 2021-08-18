@@ -1,7 +1,7 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.canconstruct;
+package com.pmobrien.my_courses.fcc.dynamic_programming.construct;
 
 import com.google.common.collect.Lists;
-import com.pmobrien.my_courses.fcc.dynamic_programming.conconstruct.CanConstruct;
+import com.pmobrien.my_courses.fcc.dynamic_programming.construct.CanConstruct;
 import com.pmobrien.my_courses.fcc.dynamic_programming.utils.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

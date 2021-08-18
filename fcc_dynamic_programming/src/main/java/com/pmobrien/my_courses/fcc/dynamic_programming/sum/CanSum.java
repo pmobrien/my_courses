@@ -1,4 +1,4 @@
-package com.pmobrien.my_courses.fcc.dynamic_programming.cansum;
+package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
 import java.util.HashMap;
 import java.util.List;
