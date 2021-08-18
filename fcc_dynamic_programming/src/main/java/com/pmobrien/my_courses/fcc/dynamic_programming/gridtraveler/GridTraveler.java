@@ -15,7 +15,7 @@ public class GridTraveler {
 
   public GridTraveler() {}
 
-  public long gridTraveler(long m, long n) {
+  public long gridTraveler(int m, int n) {
     if (m == 1 && n == 1) {
       return 1;
     }
@@ -27,11 +27,11 @@ public class GridTraveler {
     return gridTraveler(m - 1, n) + gridTraveler(m, n - 1);
   }
 
-  public long memoizedGridTraveler(long m, long n) {
+  public long memoizedGridTraveler(int m, int n) {
     return _memoizedGridTraveler(m, n, new HashMap<>());
   }
 
-  private long _memoizedGridTraveler(long m, long n, Map<String, Long> memo) {
+  private long _memoizedGridTraveler(int m, int n, Map<String, Long> memo) {
     String k1 = m + "," + n;
     String k2 = n + "," + m;
 
@@ -57,5 +57,18 @@ public class GridTraveler {
     memo.put(k2, result);
 
     return result;
+  }
+
+  public long tabulatedGridTraveler(int m, int n) {
+    long[][] dp = new long[m + 1][n + 1];
+    dp[1][1] = 1;
+
+    for (int row = 1; row <= m; ++row) {
+      for (int col = 1; col <= n; ++col) {
+        dp[row][col] = dp[row - 1][col] + dp[row][col - 1];
+      }
+    }
+
+    return dp[m + 1][n + 1];
   }
 }

@@ -12,7 +12,7 @@ public class GridTravelerTest {
 
   @ParameterizedTest
   @MethodSource("testGridTravelerSource")
-  public void testGridTraveler(long m, long n, long expected) {
+  public void testGridTraveler(int m, int n, long expected) {
     if (m > 10 || n > 10) {
       return; // don't run bigger inputs for this implementation; too slow
     }
@@ -22,7 +22,13 @@ public class GridTravelerTest {
 
   @ParameterizedTest
   @MethodSource("testGridTravelerSource")
-  public void testMemoizedGridTraveler(long m, long n, long expected) {
+  public void testMemoizedGridTraveler(int m, int n, long expected) {
+    Assertions.assertEquals(expected, Utils.timed(() -> new GridTraveler().memoizedGridTraveler(m, n)));
+  }
+
+  @ParameterizedTest
+  @MethodSource("testGridTravelerSource")
+  public void testTabulatedGridTraveler(int m, int n, long expected) {
     Assertions.assertEquals(expected, Utils.timed(() -> new GridTraveler().memoizedGridTraveler(m, n)));
   }
 
