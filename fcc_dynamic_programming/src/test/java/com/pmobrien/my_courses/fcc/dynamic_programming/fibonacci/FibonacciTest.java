@@ -26,6 +26,16 @@ public class FibonacciTest {
     Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().memoizedFibonacci(n)));
   }
 
+  @ParameterizedTest
+  @MethodSource("testFibonacciSource")
+  public void testTabulatedFibonacci(long n, long expected) {
+    if (n == 0) {
+      return; // the problem is defined differently for this one, just skip it so we don't have to change the data source
+    }
+
+    Assertions.assertEquals(expected, Utils.timed(() -> new Fibonacci().tabulatedFibonacci(n)));
+  }
+
   private static Stream<Arguments> testFibonacciSource() {
     return Stream.of(
         Arguments.of(0, 1),
