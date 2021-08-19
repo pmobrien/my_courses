@@ -2,6 +2,7 @@ package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class HowSum {
 
   public HowSum() {}
 
-  public List<Long> howSum(long targetSum, List<Long> numbers) {
+  public List<Integer> howSum(int targetSum, List<Integer> numbers) {
     if (targetSum == 0) {
       return Lists.newArrayList();
     }
@@ -27,8 +28,8 @@ public class HowSum {
       return null;
     }
 
-    for (long number : numbers) {
-      List<Long> result = howSum(targetSum - number, numbers);
+    for (int number : numbers) {
+      List<Integer> result = howSum(targetSum - number, numbers);
       if (result != null) {
         result.add(number);
         return result;
@@ -38,11 +39,11 @@ public class HowSum {
     return null;
   }
 
-  public List<Long> memoizedHowSum(long targetSum, List<Long> numbers) {
+  public List<Integer> memoizedHowSum(int targetSum, List<Integer> numbers) {
     return _memoizedHowSum(targetSum, numbers, new HashMap<>());
   }
 
-  private List<Long> _memoizedHowSum(long targetSum, List<Long> numbers, Map<Long, List<Long>> memo) {
+  private List<Integer> _memoizedHowSum(int targetSum, List<Integer> numbers, Map<Integer, List<Integer>> memo) {
     if (memo.containsKey(targetSum)) {
       return memo.get(targetSum);
     }
@@ -55,8 +56,8 @@ public class HowSum {
       return null;
     }
 
-    for (long number : numbers) {
-      List<Long> result = _memoizedHowSum(targetSum - number, numbers, memo);
+    for (int number : numbers) {
+      List<Integer> result = _memoizedHowSum(targetSum - number, numbers, memo);
       if (result != null) {
         result.add(number);
         memo.put(targetSum, result);
@@ -66,5 +67,28 @@ public class HowSum {
 
     memo.put(targetSum, null);
     return null;
+  }
+
+  @SuppressWarnings("unchecked")  // ignore the warning about the ArrayList array
+  public List<Integer> tabulatedHowSum(int targetSum, List<Integer> numbers) {
+    if (targetSum < 0) {
+      return Lists.newArrayList();
+    }
+
+    ArrayList<Integer>[] dp = new ArrayList[targetSum + 1];
+    dp[0] = new ArrayList<>();
+
+    for (int current = 1; current <= targetSum; ++current) {
+      for (int number : numbers) {
+        if (number <= current) {
+          List<Integer> list = dp[current - number];
+          if (list != null) {
+            dp[current] = new ArrayList<Integer>(list) {{ add(number); }};
+          }
+        }
+      }
+    }
+
+    return dp[targetSum];
   }
 }
