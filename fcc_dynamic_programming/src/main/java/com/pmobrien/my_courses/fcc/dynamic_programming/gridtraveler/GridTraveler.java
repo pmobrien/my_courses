@@ -1,5 +1,6 @@
 package com.pmobrien.my_courses.fcc.dynamic_programming.gridtraveler;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,15 +61,22 @@ public class GridTraveler {
   }
 
   public long tabulatedGridTraveler(int m, int n) {
-    long[][] dp = new long[m + 1][n + 1];
-    dp[1][1] = 1;
+    long[][] dp = new long[m][n];
 
-    for (int row = 1; row <= m; ++row) {
-      for (int col = 1; col <= n; ++col) {
+    for (long[] array : dp) {
+      Arrays.fill(array, 1);
+    }
+
+    for (int row = 1; row < m; ++row) {
+      for (int col = 1; col < n; ++col) {
         dp[row][col] = dp[row - 1][col] + dp[row][col - 1];
       }
     }
 
-    return dp[m + 1][n + 1];
+    return dp[m - 1][n - 1];
+  }
+
+  public static void main(String[] args) {
+    System.out.println(Character.getNumericValue('2'));
   }
 }

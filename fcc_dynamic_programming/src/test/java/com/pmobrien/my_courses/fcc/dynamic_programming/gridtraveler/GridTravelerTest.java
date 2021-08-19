@@ -29,7 +29,7 @@ public class GridTravelerTest {
   @ParameterizedTest
   @MethodSource("testGridTravelerSource")
   public void testTabulatedGridTraveler(int m, int n, long expected) {
-    Assertions.assertEquals(expected, Utils.timed(() -> new GridTraveler().memoizedGridTraveler(m, n)));
+    Assertions.assertEquals(expected, Utils.timed(() -> new GridTraveler().tabulatedGridTraveler(m, n)));
   }
 
   private static Stream<Arguments> testGridTravelerSource() {
