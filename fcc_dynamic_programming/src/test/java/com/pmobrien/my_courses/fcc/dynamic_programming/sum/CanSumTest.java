@@ -15,23 +15,29 @@ public class CanSumTest {
 
   @ParameterizedTest
   @MethodSource("testCanSumSource")
-  public void testCanSum(long targetSum, List<Long> numbers, boolean expected) {
+  public void testCanSum(int targetSum, List<Integer> numbers, boolean expected) {
     Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().canSum(targetSum, numbers)));
   }
 
   @ParameterizedTest
   @MethodSource("testCanSumSource")
-  public void testMemoizedCanSum(long targetSum, List<Long> numbers, boolean expected) {
+  public void testMemoizedCanSum(int targetSum, List<Integer> numbers, boolean expected) {
     Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().memoizedCanSum(targetSum, numbers)));
+  }
+
+  @ParameterizedTest
+  @MethodSource("testCanSumSource")
+  public void testTabulatedCanSum(int targetSum, List<Integer> numbers, boolean expected) {
+    Assertions.assertEquals(expected, Utils.timed(() -> new CanSum().tabulatedCanSum(targetSum, numbers)));
   }
 
   private static Stream<Arguments> testCanSumSource() {
     return Stream.of(
-        Arguments.of(7, Lists.newArrayList(2L, 3L), true),
-        Arguments.of(7, Lists.newArrayList(5L, 3L, 4L, 7L), true),
-        Arguments.of(7, Lists.newArrayList(2L, 4L), false),
-        Arguments.of(8, Lists.newArrayList(2L, 3L, 5L), true),
-        Arguments.of(300, Lists.newArrayList(7L, 14L), false)
+        Arguments.of(7, Lists.newArrayList(2, 3), true),
+        Arguments.of(7, Lists.newArrayList(5, 3, 4, 7), true),
+        Arguments.of(7, Lists.newArrayList(2, 4), false),
+        Arguments.of(8, Lists.newArrayList(2, 3, 5), true),
+        Arguments.of(300, Lists.newArrayList(7, 14), false)
     );
   }
 }

@@ -1,5 +1,6 @@
 package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class CanSum {
 
   public CanSum() {}
 
-  public boolean canSum(long targetSum, List<Long> numbers) {
+  public boolean canSum(int targetSum, List<Integer> numbers) {
     if (targetSum < 0) {
       return false;
     }
@@ -27,7 +28,7 @@ public class CanSum {
       return true;
     }
 
-    for (long number : numbers) {
+    for (int number : numbers) {
       if (canSum(targetSum - number, numbers)) {
         return true;
       }
@@ -36,11 +37,11 @@ public class CanSum {
     return false;
   }
 
-  public boolean memoizedCanSum(long targetSum, List<Long> numbers) {
+  public boolean memoizedCanSum(int targetSum, List<Integer> numbers) {
     return _memoizedCanSum(targetSum, numbers, new HashMap<>());
   }
 
-  private boolean _memoizedCanSum(long targetSum, List<Long> numbers, Map<Long, Boolean> memo) {
+  private boolean _memoizedCanSum(int targetSum, List<Integer> numbers, Map<Integer, Boolean> memo) {
     if (memo.containsKey(targetSum)) {
       return memo.get(targetSum);
     }
@@ -53,7 +54,7 @@ public class CanSum {
       return true;
     }
 
-    for (long number : numbers) {
+    for (int number : numbers) {
       if (_memoizedCanSum(targetSum - number, numbers, memo)) {
         memo.put(targetSum, true);
         return true;
@@ -62,5 +63,26 @@ public class CanSum {
 
     memo.put(targetSum, false);
     return false;
+  }
+
+  public boolean tabulatedCanSum(int targetSum, List<Integer> numbers) {
+    if (targetSum < 0) {
+      return false;
+    }
+
+    boolean[] dp = new boolean[targetSum + 1];
+    dp[0] = true;
+
+    for (int i = 1; i <= targetSum; ++i) {
+      for (int number : numbers) {
+        if (number <= i) {
+          dp[i] = dp[i] || dp[i - number];
+        }
+      }
+    }
+
+    System.out.println(Arrays.toString(dp));
+
+    return dp[targetSum];
   }
 }
