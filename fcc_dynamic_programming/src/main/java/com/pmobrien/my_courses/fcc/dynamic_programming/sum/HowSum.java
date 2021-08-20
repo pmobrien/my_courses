@@ -72,7 +72,7 @@ public class HowSum {
   @SuppressWarnings("unchecked")  // ignore the warning about the ArrayList array
   public List<Integer> tabulatedHowSum(int targetSum, List<Integer> numbers) {
     if (targetSum < 0) {
-      return Lists.newArrayList();
+      return null;
     }
 
     ArrayList<Integer>[] dp = new ArrayList[targetSum + 1];

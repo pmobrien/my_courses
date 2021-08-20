@@ -1,7 +1,6 @@
 package com.pmobrien.my_courses.fcc.dynamic_programming.sum;
 
 import com.google.common.collect.Lists;
-import com.pmobrien.my_courses.fcc.dynamic_programming.sum.BestSum;
 import com.pmobrien.my_courses.fcc.dynamic_programming.utils.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +14,7 @@ public class BestSumTest {
 
   @ParameterizedTest
   @MethodSource("testBestSumSource")
-  public void testBestSum(long targetSum, List<Long> numbers, List<Long> expected) {
+  public void testBestSum(int targetSum, List<Integer> numbers, List<Integer> expected) {
     if (targetSum > 50) {
       return; // don't run bigger inputs for this implementation; too slow
     }
@@ -25,16 +24,22 @@ public class BestSumTest {
 
   @ParameterizedTest
   @MethodSource("testBestSumSource")
-  public void testMemoizedBestSum(long targetSum, List<Long> numbers, List<Long> expected) {
+  public void testMemoizedBestSum(int targetSum, List<Integer> numbers, List<Integer> expected) {
     Assertions.assertEquals(expected, Utils.timed(() -> new BestSum().memoizedBestSum(targetSum, numbers)));
+  }
+
+  @ParameterizedTest
+  @MethodSource("testBestSumSource")
+  public void testTabulatedBestSum(int targetSum, List<Integer> numbers, List<Integer> expected) {
+    Assertions.assertEquals(expected, Utils.timed(() -> new BestSum().tabulatedBestSum(targetSum, numbers)));
   }
 
   private static Stream<Arguments> testBestSumSource() {
     return Stream.of(
-        Arguments.of(7, Lists.newArrayList(5L, 3L, 4L, 7L), Lists.newArrayList(7L)),
-        Arguments.of(8, Lists.newArrayList(2L, 3L, 5L), Lists.newArrayList(5L, 3L)),
-        Arguments.of(8, Lists.newArrayList(1L, 4L, 5L), Lists.newArrayList(4L, 4L)),
-        Arguments.of(100, Lists.newArrayList(1L, 2L, 5L, 25L), Lists.newArrayList(25L, 25L, 25L, 25L))
+        Arguments.of(7, Lists.newArrayList(5, 3, 4, 7), Lists.newArrayList(7)),
+        Arguments.of(8, Lists.newArrayList(2, 3, 5), Lists.newArrayList(5, 3)),
+        Arguments.of(8, Lists.newArrayList(1, 4, 5), Lists.newArrayList(4, 4)),
+        Arguments.of(100, Lists.newArrayList(1, 2, 5, 25), Lists.newArrayList(25, 25, 25, 25))
     );
   }
 }
